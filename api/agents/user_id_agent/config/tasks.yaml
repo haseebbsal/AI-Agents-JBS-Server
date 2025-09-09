@@ -1,0 +1,13 @@
+image_processing_task:
+  description: >
+    Use OpenAI's OCR API to extract text from the {image_path}.
+  expected_output: >
+    Raw text extracted from the image, including all visible fields.
+  agent: image_processor
+
+data_extraction_task:
+  description: >
+    Analyze the extracted text to identify and structure key fields such as name, date of birth,ID number and other visible fields. Generate a markdown report summarizing the compliance findings.
+  expected_output: >
+    String data fields and Not Json.
+  agent: data_extractor

@@ -1,0 +1,25 @@
+transcription_task:
+  description: >
+    Transcribe {audio_responses} into text.
+  inputs:
+    - audio_responses
+  outputs:
+    - transcribed_text
+  expected_output: >
+    Text transcription of all audio responses.
+
+
+story_generation_task:
+  description: >
+    Analyze the provided transcriptions of user responses, extract key elements such as user role, desired functionality, and benefit, and generate Agile user stories in the format:
+    "As a [user], I want [functionality] so that [benefit]."
+  inputs:
+    - transcriptions
+  outputs:
+    - user_stories
+  expected_output: >
+    A list of Agile user stories, each providing a clear user role, desired functionality, and benefit in the format:
+    "As a [user], I want [functionality] so that [benefit]."
+  logic: >
+    - Analyze transcriptions for user role, desired functionality, benefit, context, and priority.
+    - Ensure that all Agile user stories are structured and coherent.

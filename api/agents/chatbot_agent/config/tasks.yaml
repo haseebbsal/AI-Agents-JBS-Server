@@ -1,0 +1,17 @@
+scraping_task:
+  description: >
+    Use the query: {query} and the conversation context: {context}
+    to extract relevant sections or all content from the uploaded PDF document.
+    If specific queries fail, try extracting the entire document content.
+  expected_output: >
+    Extracted text or sections that match the query.
+  agent: scraper
+
+query_resolver_task:
+  description: >
+    Based on the query: {query}  and context: {context},
+    provide a concise answer in plain language, highlighting key points from the document.
+    If no direct content is found, suggest relevant queries or summarize broadly.
+  expected_output: >
+    A markdown-formatted answer not exceeding 5 lines, simplifying the content where necessary.
+  agent: query_resolver

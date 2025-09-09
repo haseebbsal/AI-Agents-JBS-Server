@@ -1,0 +1,20 @@
+[project]
+name = "chatbot_agent"
+version = "0.1.0"
+description = "chatbot_agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.80.0,<1.0.0"
+]
+
+[project.scripts]
+chatbot_agent = "chatbot_agent.main:run"
+run_crew = "chatbot_agent.main:run"
+train = "chatbot_agent.main:train"
+replay = "chatbot_agent.main:replay"
+test = "chatbot_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

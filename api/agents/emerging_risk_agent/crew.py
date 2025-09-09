@@ -1,0 +1,183 @@
+from crewai import Agent, Crew, Process, Task
+from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool
+
+PREDEFINED_RISKS = {
+    "Property Insurance": [
+        {"risk_category": "Climate Change", "details": "Increased frequency and severity of natural disasters such as hurricanes, floods, and wildfires elevate property damage risks."},
+        {"risk_category": "Urbanization", "details": "Rapid urban development leads to higher property concentrations, amplifying potential loss impacts."},
+        {"risk_category": "Supply Chain Disruptions", "details": "Global events can delay repairs and replacements, prolonging claim settlements."},
+        {"risk_category": "Technological Risks", "details": "Smart homes and Internet of Things (IoT) devices introduce vulnerabilities to cyberattacks that can cause physical damage."},
+        {"risk_category": "Aging Infrastructure", "details": "Deteriorating public infrastructure can lead to increased property damage from events like water main breaks or power outages."},
+    ],
+    "Commercial Insurance": [
+        {"risk_category": "Cyber Threats", "details": "Growing cyberattacks, including ransomware, pose significant operational risks."},
+        {"risk_category": "Regulatory Changes", "details": "Evolving laws, especially regarding data protection and environmental standards, affect compliance."},
+        {"risk_category": "Pandemic-Related Disruptions", "details": "Ongoing effects of pandemics can disrupt business operations and supply chains."},
+        {"risk_category": "Gig Economy", "details": "The rise of non-traditional work arrangements introduces new liabilities and coverage needs."},
+        {"risk_category": "Technological Disruptions", "details": "Adoption of new technologies may introduce operational risks and require updated coverage."},
+    ],
+    "Life Insurance": [
+        {"risk_category": "Pandemic Risks", "details": "Emerging diseases can increase mortality rates, affecting life insurance claims."},
+        {"risk_category": "Longevity Risk", "details": "Advancements in healthcare may lead to longer lifespans, impacting annuity products."},
+        {"risk_category": "Behavioral Changes", "details": "Shifts in lifestyle, such as increased smoking or sedentary habits, can influence mortality and morbidity rates."},
+        {"risk_category": "Genetic Testing", "details": "Availability of genetic information may affect underwriting and risk assessment processes."},
+        {"risk_category": "Mental Health Issues", "details": "Increased prevalence can impact mortality and disability claims."},
+    ],
+    "Health Insurance": [
+        {"risk_category": "Pandemic Preparedness", "details": "New infectious diseases can strain healthcare systems and increase claims."},
+        {"risk_category": "Mental Health Awareness", "details": "Rising recognition of mental health issues leads to higher demand for related services."},
+        {"risk_category": "Technological Integration", "details": "Telemedicine and digital health tools introduce new risks and regulatory considerations."},
+        {"risk_category": "Rising Healthcare Costs", "details": "Escalating medical expenses increase claim costs."},
+        {"risk_category": "Chronic Diseases", "details": "Increase in conditions like diabetes and obesity affects claims frequency and severity."},
+    ],
+    "Motor Insurance": [
+        {"risk_category": "Autonomous Vehicles", "details": "The rise of self-driving cars presents challenges in liability determination."},
+        {"risk_category": "Electric Vehicles (EVs)", "details": "EVs have unique risks, including battery fires and high repair costs."},
+        {"risk_category": "Telematics", "details": "Usage-based insurance models raise concerns about data privacy and security."},
+        {"risk_category": "Shared Mobility Services", "details": "Car-sharing and ride-sharing services change exposure profiles and liability."},
+        {"risk_category": "Driver Distractions", "details": "Increased use of mobile devices contributes to accident risks."},
+    ],
+    "Aviation Insurance": [
+        {"risk_category": "Drone Operations", "details": "Increased use of drones introduces airspace management and collision risks."},
+        {"risk_category": "Cybersecurity", "details": "Aircraft systems are vulnerable to cyberattacks, potentially compromising safety."},
+        {"risk_category": "Environmental Regulations", "details": "Stricter emissions standards may affect operational costs and liabilities."},
+        {"risk_category": "Pilot Shortages", "details": "Less experienced pilots may impact safety and increase accident risks."},
+        {"risk_category": "Unmanned Aerial Vehicles (UAVs)", "details": "Integration into commercial airspace introduces new risks."},
+    ],
+    "Cargo Insurance": [
+        {"risk_category": "Supply Chain Vulnerabilities", "details": "Global disruptions, such as pandemics or geopolitical tensions, can impact cargo transit."},
+        {"risk_category": "Piracy and Theft", "details": "Maritime piracy and cargo theft remain significant concerns."},
+        {"risk_category": "Climate Change", "details": "Extreme weather events can damage goods during transit."},
+        {"risk_category": "Cyber Risks", "details": "Hacking of logistics systems can lead to cargo misplacement or theft."},
+        {"risk_category": "Counterfeit Goods", "details": "Illicit products entering supply chains can lead to legal and financial repercussions."},
+    ],
+    "Hull Insurance": [
+        {"risk_category": "Aging Fleets", "details": "Older vessels may have higher maintenance needs and accident risks."},
+        {"risk_category": "Environmental Compliance", "details": "New regulations require costly upgrades to reduce emissions."},
+        {"risk_category": "Cyber Threats", "details": "Ship navigation and control systems are susceptible to cyberattacks."},
+        {"risk_category": "Arctic Navigation", "details": "Melting ice opens new shipping routes with unique risks such as icebergs and limited rescue infrastructure."},
+        {"risk_category": "Autonomous Ships", "details": "Emerging technologies introduce new operational and liability risks."},
+    ],
+    "Cyber Insurance": [
+        {"risk_category": "Evolving Threat Landscape", "details": "Cyber threats are becoming more sophisticated, increasing potential losses."},
+        {"risk_category": "Regulatory Scrutiny", "details": "Data protection laws are tightening, leading to higher compliance costs."},
+        {"risk_category": "Systemic Risk", "details": "Widespread cyber incidents can cause simultaneous claims across multiple policyholders."},
+        {"risk_category": "Silent Cyber Risks", "details": "Cyber exposures embedded in traditional insurance policies may lead to unanticipated losses."},
+        {"risk_category": "Aggregation Risks", "details": "Interconnected systems can lead to cascading failures affecting multiple insured parties."},
+    ],
+    "Marine Insurance": [
+        {"risk_category": "Environmental Hazards", "details": "Oil spills and other environmental incidents can lead to significant liabilities."},
+        {"risk_category": "Regulatory Changes", "details": "International maritime laws are evolving, affecting coverage requirements."},
+        {"risk_category": "Technological Advancements", "details": "Automation in shipping introduces new operational risks."},
+        {"risk_category": "Piracy and Terrorism", "details": "Ongoing threats in certain regions pose risks to vessels and cargo."},
+        {"risk_category": "Climate Change", "details": "Rising sea levels and extreme weather events affect marine operations and increase loss frequency."},
+    ],
+    "Directors and Officers (D&O) Insurance": [
+        {"risk_category": "Corporate Governance", "details": "Increased focus on corporate responsibility and ethics can lead to more lawsuits."},
+        {"risk_category": "Cyber Liability", "details": "Executives may be held accountable for data breaches and cybersecurity failures."},
+        {"risk_category": "Regulatory Investigations", "details": "Heightened regulatory scrutiny can result in legal actions against directors and officers."},
+        {"risk_category": "ESG Issues", "details": "Environmental, Social, and Governance factors can lead to shareholder activism and litigation."},
+        {"risk_category": "Diversity and Inclusion", "details": "Failures in promoting diversity can result in reputational damage and legal claims."},
+    ],
+    "Environmental Liability Insurance": [
+        {"risk_category": "Climate Change Litigation", "details": "Companies may face lawsuits over environmental impacts and carbon emissions."},
+        {"risk_category": "Pollution Incidents", "details": "Accidental releases of pollutants can lead to significant cleanup costs and fines."},
+        {"risk_category": "Regulatory Compliance", "details": "Stricter environmental laws increase the risk of non-compliance penalties."},
+        {"risk_category": "Emerging Contaminants", "details": "New pollutants like PFAS lead to unexpected liabilities."},
+        {"risk_category": "Biodiversity Loss", "details": "Liability arising from damage to ecosystems and loss of biodiversity."},
+    ],
+    "Professional Liability Insurance": [
+        {"risk_category": "Technological Errors", "details": "Reliance on technology increases the risk of errors in professional services."},
+        {"risk_category": "Regulatory Changes", "details": "New laws can alter standards of care, affecting liability exposures."},
+        {"risk_category": "Cyber Risks", "details": "Data breaches involving client information can lead to liability claims."},
+        {"risk_category": "Artificial Intelligence (AI) Risks", "details": "Use of AI in services may lead to errors due to biases or malfunctions."},
+        {"risk_category": "Remote Work", "details": "Increased potential for mistakes due to less supervision and communication challenges."},
+    ],
+    "Product Liability Insurance": [
+        {"risk_category": "Supply Chain Complexity", "details": "Global supply chains make it harder to trace defects, increasing liability risks."},
+        {"risk_category": "Regulatory Standards", "details": "Changes in safety regulations can lead to increased recall incidents."},
+        {"risk_category": "Technological Integration", "details": "Smart products with software components may have vulnerabilities."},
+        {"risk_category": "3D Printing", "details": "Decentralized manufacturing can lead to quality control issues."},
+        {"risk_category": "Counterfeit Products", "details": "Increase in counterfeit goods can result in liability for legitimate companies."},
+    ],
+    "Employment Practices Liability Insurance": [
+        {"risk_category": "Workplace Discrimination", "details": "Evolving definitions and awareness can lead to more claims."},
+        {"risk_category": "Remote Work Challenges", "details": "Managing remote employees introduces new legal and compliance risks."},
+        {"risk_category": "Wage and Hour Claims", "details": "Misclassification of employees and overtime disputes are on the rise."},
+        {"risk_category": "Sexual Harassment Claims", "details": "Increased reporting due to movements like #MeToo."},
+        {"risk_category": "Social Media Risks", "details": "Employees’ online behavior can result in reputational damage."},
+    ],
+    "Agricultural Insurance": [
+        {"risk_category": "Climate Change", "details": "Extreme weather events such as droughts, floods, and storms can devastate crops and livestock."},
+        {"risk_category": "Pest and Disease Outbreaks", "details": "New pests and diseases can impact agricultural productivity."},
+        {"risk_category": "Market Volatility", "details": "Fluctuations in commodity prices can affect farmers’ income and claims."},
+    ],
+    "Kidnap and Ransom Insurance": [
+        {"risk_category": "Global Instability", "details": "Increased political unrest in certain regions elevates the risk of kidnapping."},
+        {"risk_category": "Cyber Extortion", "details": "Rise in ransomware attacks demands coverage for digital extortion."},
+    ],
+    "Credit and Political Risk Insurance": [
+        {"risk_category": "Economic Uncertainty", "details": "Global economic instability increases the risk of defaults."},
+        {"risk_category": "Geopolitical Risks", "details": "Political upheaval can lead to expropriation, nationalization, or currency issues."},
+    ],
+    "Energy Insurance": [
+        {"risk_category": "Renewable Energy Risks", "details": "New technologies in wind, solar, and other renewables present unique risks."},
+        {"risk_category": "Cybersecurity", "details": "Energy infrastructure is a target for cyberattacks, leading to operational and safety risks."},
+        {"risk_category": "Environmental Regulations", "details": "Stricter laws on emissions and waste management impact operational liabilities."},
+    ],
+    "Technology Insurance": [
+        {"risk_category": "Rapid Innovation", "details": "Fast-paced advancements can render technologies obsolete quickly."},
+        {"risk_category": "Intellectual Property (IP) Risks", "details": "Increased litigation over IP infringements can lead to significant financial losses."},
+    ],
+}
+
+
+@CrewBase
+class EmergingRiskAgent:
+    """EmergingRiskAgent crew"""
+
+
+
+    agents_config = 'config/agents.yaml'
+    tasks_config = 'config/tasks.yaml'
+
+
+    @agent
+    def researcher(self) -> Agent:
+        return Agent(
+            config=self.agents_config['researcher'],
+            tools=[SerperDevTool()],  
+            verbose=True
+        )
+
+    @agent
+    def reporting_analyst(self) -> Agent:
+        return Agent(
+            config=self.agents_config['reporting_analyst'],
+            verbose=True
+        )
+
+    @task
+    def research_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['research_task'],
+            agents=[self.researcher()], 
+            async_execution=True
+        )
+
+    @task
+    def reporting_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['reporting_task'],
+            agents=[self.reporting_analyst()],
+        )
+
+    @crew
+    def crew(self) -> Crew:
+        return Crew(
+            agents=self.agents,
+            tasks=self.tasks,
+            process=Process.sequential,
+            verbose=True,
+        )

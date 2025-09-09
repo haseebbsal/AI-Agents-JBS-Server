@@ -1,0 +1,46 @@
+search_task:
+  description: >
+    Perform targeted searches on key platforms (Trustpilot, Twitter, Reddit, Google Reviews) for customer opinions about {company_name} in {geographical_location}.
+    Limit results to recent feedback (last 3-6 months).
+  expected_output: >
+    - URLs or post identifiers containing relevant customer feedback from {geographical_location}.
+    - Platform details (e.g., Trustpilot, Twitter, Reddit).
+    - High-level sentiment context (positive, neutral, negative).
+
+scraping_task:
+  description: >
+    Extract structured data from URLs provided by the search task, focusing on feedback from {geographical_location}. Extract:
+    - Customer feedback text.
+    - Dates of feedback.
+    - Platform identifiers (e.g., post IDs or user mentions).
+  expected_output: >
+    A structured dataset containing:
+      - Extracted feedback text from {geographical_location}.
+      - Dates of feedback.
+      - Platform metadata (e.g., source platform, post IDs).
+
+sentiment_analysis_task:
+  description: >
+    Analyze extracted feedback from {geographical_location} to classify sentiment into:
+    - Positive, Neutral, Negative.
+    Identify recurring themes (e.g., claims, pricing, customer support) specific to {geographical_location}. Make the markdown document without the '```'.
+  expected_output: >
+    - Categorized feedback lists (Positive, Neutral, Negative) for {geographical_location}.
+    - Key themes within each sentiment category (e.g., common complaints or praises) in {geographical_location}.
+    - Make the markdown document without the '```'.
+
+
+generate_report_task:
+  description: >
+    Generate a concise markdown report summarizing:
+    - Sentiment distribution (percentage breakdown of Positive, Neutral, Negative).
+    - Key themes and recurring topics in {geographical_location}.
+    - Actionable insights tailored to {geographical_location}.
+    - Make the markdown document without the '```'.
+  expected_output: >
+    A markdown report summarizing:
+      - Sentiment distribution.
+      - Key themes or recurring topics in {geographical_location}.
+      - 2-3 actionable insights based on customer feedback.
+      - Make the markdown document without the '```'.
+

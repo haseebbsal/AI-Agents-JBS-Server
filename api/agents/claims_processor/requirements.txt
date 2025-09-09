@@ -1,0 +1,6 @@
+python-docx
+PyPDF2
+requests
+crewai
+crewai-tools
+python-dotenv

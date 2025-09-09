@@ -1,0 +1,40 @@
+keyword_insights_task:
+  description: >
+    Perform a detailed analysis of top-performing keywords related to "{project_description}" for the domain "{customer_domain}" 
+    in the geographical region "{geographical_location}". Evaluate commercial value (CPC), competition level, 
+    search volume, and trends specific to the insurance sector. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown document structured as:
+      - **Top-Performing Keywords**: List keywords with CPC, competition level, and search volume.
+      - **Trends**: Describe keyword performance trends in the insurance sector.
+      - Make the markdown document without the '```'.
+
+related_keyword_task:
+  description: >
+    Identify related keywords for "{project_description}" associated with "{customer_domain}" in "{geographical_location}". 
+    Rank these keywords based on relevance, CPC, competition level, and search volume, focusing on the insurance industry. Make the markdown document without the '```'.
+  expected_output: >
+    A single Markdown table summarizing related keywords with columns for keyword, relevance, CPC, competition level, 
+    and search volume. Make the markdown document without the '```'.
+
+seo_competitor_task:
+  description: >
+    Analyze SEO performance of competitors for keywords related to "{project_description}" associated with "{customer_domain}" 
+    in "{geographical_location}". Focus on domain authority, backlink profiles, keyword overlap, and top-performing pages. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown document structured as:
+      - **Competitor List**: List of competitors analyzed.
+      - **Performance Metrics**: Insights on domain authority, backlinks, keyword overlap, and top pages.
+      - **Summary**: Key findings about competitors.
+      - Make the markdown document without the '```'.
+
+seo_recommendation_task:
+  description: >
+    Provide actionable SEO recommendations based on keyword and competitor analysis for "{project_description}" 
+    related to "{customer_domain}" in "{geographical_location}". Focus on improving rankings, increasing organic traffic, 
+    and achieving long-term visibility. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown document structured as:
+      - **Recommendations**: Detailed, actionable SEO recommendations.
+      - **Expected Outcomes**: Projected results from implementing recommendations.
+      - Make the markdown document without the '```'.

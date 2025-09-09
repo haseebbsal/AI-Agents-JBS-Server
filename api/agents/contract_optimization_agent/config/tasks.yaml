@@ -1,0 +1,20 @@
+analyze_document_task:
+  description: >
+    Parse and analyze the {contract_text} to extract key terms and provisions, and evaluate alignment with industry best practices. Make the markdown document without the '```'.
+  agent: document_analysis_agent
+  expected_output: >
+    A Markdown report with:
+      - **Key Contract Terms**: Identified terms such as payment terms, SLAs, and termination clauses.
+      - **Areas of Improvement**: Highlighted sections requiring updates based on predefined guidelines.
+
+generate_suggestions_task:
+  description: >
+    Generate actionable recommendations for optimizing the contract terms. Make the markdown document without the '```'.
+  agent: suggestions_generation_agent
+  context:
+    - analyze_document_task
+  expected_output: >
+    A Markdown report containing:
+      - **Key Contract Terms**: Extracted terms for reference.
+      - **Areas of Improvement**: Identified gaps or issues in the contract.
+      - **Actionable Suggestions**: Recommendations for improving contract terms, ensuring better alignment with best practices.

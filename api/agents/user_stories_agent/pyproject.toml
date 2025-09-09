@@ -1,0 +1,20 @@
+[project]
+name = "user_stories_agent"
+version = "0.1.0"
+description = "user-stories-agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+user_stories_agent = "user_stories_agent.main:run"
+run_crew = "user_stories_agent.main:run"
+train = "user_stories_agent.main:train"
+replay = "user_stories_agent.main:replay"
+test = "user_stories_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

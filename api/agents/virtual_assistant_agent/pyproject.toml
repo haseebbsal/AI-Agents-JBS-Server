@@ -1,0 +1,20 @@
+[project]
+name = "virtual_assistant_agent"
+version = "0.1.0"
+description = "virtual-assistant-agent using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+virtual_assistant_agent = "virtual_assistant_agent.main:run"
+run_crew = "virtual_assistant_agent.main:run"
+train = "virtual_assistant_agent.main:train"
+replay = "virtual_assistant_agent.main:replay"
+test = "virtual_assistant_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

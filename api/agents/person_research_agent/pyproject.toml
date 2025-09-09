@@ -1,0 +1,20 @@
+[project]
+name = "person_research_agent"
+version = "0.1.0"
+description = "person-research-agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+person_research_agent = "person_research_agent.main:run"
+run_crew = "person_research_agent.main:run"
+train = "person_research_agent.main:train"
+replay = "person_research_agent.main:replay"
+test = "person_research_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,23 @@
+research_task:
+  description: >
+    Collect and synthesize all relevant public data about the {person} into a single cohesive task to avoid repetition and streamline output. Make the markdown document without the '```'.
+  agent: research_agent
+  expected_output: >
+    A Markdown report containing:
+      - **Name**: The person's full name and any aliases.
+      - **Biography**: Summary of their professional or personal background.
+      - **Public Activities**: Key achievements, mentions, or engagements.
+      - **Risk Factors**: Any identified risks or concerns, if applicable.
+      - **Key Insights**: Observations and recommendations based on the data.
+      - Make the markdown document without the '```'.
+  process:
+    - Perform a detailed search for all relevant public data about the {person}.
+    - Validate information for accuracy and relevance.
+    - Cross-check multiple sources to ensure consistency.
+    - Consolidate findings into a cohesive summary for the final report.
+  output_format: >
+    - **Name**: [Full Name]
+    - **Biography**: [Professional or Personal Background]
+    - **Public Activities**: [Notable Achievements or Mentions]
+    - **Risk Factors**: [Any Identified Risks or None]
+    - **Key Insights**: [Final Observations or Recommendations]

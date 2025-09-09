@@ -1,0 +1,20 @@
+[project]
+name = "user_id_agent"
+version = "0.1.0"
+description = "user-id-agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+user_id_agent = "user_id_agent.main:run"
+run_crew = "user_id_agent.main:run"
+train = "user_id_agent.main:train"
+replay = "user_id_agent.main:replay"
+test = "user_id_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

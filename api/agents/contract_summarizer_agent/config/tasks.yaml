@@ -1,0 +1,25 @@
+extract_task:
+  description: >
+    Extract critical sections, including coverage, exclusions, obligations, and key terms, from the provided document: {contract_text}.
+  expected_output: >
+    A detailed extraction of the contract's key sections.
+    
+  agent: extractor
+
+summarize_task:
+  description: >
+    Summarize the extracted sections into concise points that capture the essence of each section.
+  expected_output: >
+    A concise summary of the contract's coverage, exclusions, obligations, and key terms.
+  agent: summarizer
+
+structure_task:
+  description: >
+    Format the summarized content into a structured markdown report with clear headings and subheadings for each section. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report with:
+      - **Coverage**: A concise summary of coverage details.
+      - **Exclusions**: A concise summary of exclusions.
+      - **Obligations**: A concise summary of obligations.
+      - **Key Terms**: A concise summary of key terms.
+  agent: structurer

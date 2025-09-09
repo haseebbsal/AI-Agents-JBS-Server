@@ -1,0 +1,49 @@
+competitor_data_task:
+  description: >
+    Collect comprehensive data on the {competitor1} and {competitor2}, including financial metrics, market share, 
+    product offerings, recent news, and strategic initiatives filtered to {area}. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown document with:
+      - **Financial Metrics**: Revenue, profit, and other relevant figures.
+      - **Market Share**: Detailed market share insights in the {area}.
+      - **Product Offerings**: Summary of products and services.
+      - **Recent News**: Key updates on {competitor1} and {competitor2}.
+      - **Strategic Initiatives**: Recent business strategies or plans.
+      - Make the markdown document without the '```'.
+
+market_positioning_task:
+  description: >
+    Analyze the market positioning of the {competitor1} and {competitor2} by evaluating their target demographics, 
+    unique selling propositions, branding strategies, and overall market presence in the {area}. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown document with:
+      - **Target Demographics**: Audience segmentation for each competitor.
+      - **Unique Selling Propositions (USPs)**: Distinct value offerings.
+      - **Branding Strategies**: Branding and messaging analysis.
+      - **Market Presence**: Visibility and positioning in the {area}.
+      - Make the markdown document without the '```'.
+
+performance_metrics_task:
+  description: >
+    Assess key performance indicators (KPIs) for the {competitor1} and {competitor2}, such as revenue growth, 
+    profitability, customer retention rates, and claim settlement ratios, filtered to {area}. Compare these metrics against industry benchmarks. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown document with:
+      - **Revenue Growth**: Detailed growth trends.
+      - **Profitability**: Profit margins and overall financial health.
+      - **Customer Retention**: Retention rates and strategies.
+      - **Claim Settlement Ratios**: Efficiency and customer satisfaction data.
+      - **Industry Benchmark Comparison**: Performance against competitors.
+      - Make the markdown document without the '```'.
+
+competitor_comparison_task:
+  description: >
+    Compare the {competitor1} and {competitor2} based on the collected data and performance metrics for the {area}.  Make the markdown document without the '```'.
+    Highlight strengths, weaknesses, market opportunities, and threats for each competitor.
+  expected_output: >
+    A Markdown document with:
+      - **Strengths**: Key advantages for each competitor.
+      - **Weaknesses**: Areas of improvement for each competitor.
+      - **Market Opportunities**: Potential growth opportunities in the {area}.
+      - **Threats**: Challenges or risks faced by each competitor.
+      - Make the markdown document without the '```'.

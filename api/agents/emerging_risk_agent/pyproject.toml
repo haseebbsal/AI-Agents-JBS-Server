@@ -1,0 +1,20 @@
+[project]
+name = "emerging_risk_agent"
+version = "0.1.0"
+description = "emerging-risk-agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+emerging_risk_agent = "emerging_risk_agent.main:run"
+run_crew = "emerging_risk_agent.main:run"
+train = "emerging_risk_agent.main:train"
+replay = "emerging_risk_agent.main:replay"
+test = "emerging_risk_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

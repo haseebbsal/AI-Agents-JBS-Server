@@ -1,0 +1,49 @@
+```plaintext
+Month,Line of Business,Projected Budget (USD)
+Jan 2024,Plant Extracts,650000
+Jan 2024,Natural Extracts,320000
+Jan 2024,Meat Extracts,120000
+Feb 2024,Plant Extracts,670600
+Feb 2024,Natural Extracts,330800
+Feb 2024,Meat Extracts,125000
+Mar 2024,Plant Extracts,691818
+Mar 2024,Natural Extracts,341924
+Mar 2024,Meat Extracts,130136
+Apr 2024,Plant Extracts,713669
+Apr 2024,Natural Extracts,353382
+Apr 2024,Meat Extracts,135413
+May 2024,Plant Extracts,736180
+May 2024,Natural Extracts,365181
+May 2024,Meat Extracts,140836
+Jun 2024,Plant Extracts,759381
+Jun 2024,Natural Extracts,377327
+Jun 2024,Meat Extracts,146409
+Jul 2024,Plant Extracts,783303
+Jul 2024,Natural Extracts,389826
+Jul 2024,Meat Extracts,152137
+Aug 2024,Plant Extracts,807982
+Aug 2024,Natural Extracts,402687
+Aug 2024,Meat Extracts,158024
+Sep 2024,Plant Extracts,833451
+Sep 2024,Natural Extracts,415916
+Sep 2024,Meat Extracts,164076
+Oct 2024,Plant Extracts,859743
+Oct 2024,Natural Extracts,429522
+Oct 2024,Meat Extracts,170297
+Nov 2024,Plant Extracts,886895
+Nov 2024,Natural Extracts,443512
+Nov 2024,Meat Extracts,176694
+Dec 2024,Plant Extracts,914936
+Dec 2024,Natural Extracts,457895
+Dec 2024,Meat Extracts,183271
+```
+
+- **Assumptions and Adjustments:**
+  - The projected budget for each line of business has been adjusted based on the specific CAGR mentioned for each sector, reflecting growth trends and economic conditions.
+  - For plant extracts and natural extracts, the rapid growth and consumer preference for natural products have led to higher growth in budget allocations to mirror their CAGR.
+  - Meat extracts have a more moderate CAGR, and thus see a more conservative budget growth throughout the year.
+  - Overall projections take into account the general economic resilience and growth expected in the region as per the Asian Development Bank's outlook.
+  - The spreadsheet aligns with current market insights, highlighting the expanding digital economy's influence on business strategies and the push for sustainable products.
+
+- **Format:**
+  - The content is formatted in CSV to directly represent the budget forecast per month per line of business.

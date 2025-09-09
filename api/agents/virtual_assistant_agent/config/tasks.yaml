@@ -1,0 +1,15 @@
+scraping_task:
+  description: >
+    Use the query: {query} and the conversation context: {context}
+    to extract relevant sections or all content from the merged PDF document.
+  expected_output: >
+    Extracted sections or text that match the query, ready for further processing.
+  agent: scraper
+
+query_resolver_task:
+  description: >
+    Based on the query: {query} and context: {context},
+    provide a concise answer in plain language, highlighting key points from the extracted content.
+  expected_output: >
+    A markdown-formatted answer not exceeding 5 lines, simplifying the content where necessary.
+  agent: query_resolver

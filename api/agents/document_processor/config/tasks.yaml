@@ -1,0 +1,20 @@
+translate_task:
+  description: >
+    Translate the document text to English if required. Input: {document_text}.
+  expected_output: >
+    The complete text of the document in English.
+  agent: translator
+
+analyze_task:
+  description: >
+    Analyze the translated text and extract key information according to the predefined insurance-related categories: accident report, police report, customer service request.
+  expected_output: >
+    A detailed analysis of the document, identifying key categories and summarizing content accordingly.
+  agent: analyzer
+
+format_task:
+  description: >
+    Format the analyzed content into a structured markdown document with clear headings and subheadings for each category. Make the markdown document without the '```'.
+  expected_output: >
+    A well-structured markdown document summarizing the document's key points.
+  agent: formatter

@@ -1,0 +1,71 @@
+research_task:
+  description: >
+    Conduct a thorough research about the customer and competitors within the insurance industry
+    context of {geographical_location}.
+    Focus on gathering relevant data for 2024, including market trends, regulatory updates,
+    and competitive positioning.
+    We are working with them on the following project: {project_description}.
+  expected_output: >
+    A comprehensive markdown report on the customer and their competitors, including:
+    • Demographics and preferences specific to insurance products.
+    • Market positioning and audience engagement within the insurance sector.
+    • Regulatory considerations and compliance trends.
+
+project_understanding_task:
+  description: >
+    Understand the project details and the target audience specifically for
+    insurance-focused {project_description}.
+    Review any provided materials and gather additional information on insurance customer behavior,
+    regulatory requirements, and product categories.
+  expected_output: >
+    A detailed markdown report on the details of the project and a profile of the target audience, including:
+    • Emotional drivers for purchasing insurance.
+    • Preferences for different types of insurance (e.g., life, health, property).
+    • Expectations regarding customer service and claims processes.
+
+marketing_strategy_task:
+  description: >
+    Formulate a comprehensive marketing strategy tailored to the insurance industry for
+    {project_description} of the customer in {geographical_location}.
+    Use insights from the research and project understanding tasks to craft strategies that highlight
+    the value of insurance products and build customer trust.
+  expected_output: >
+    A detailed markdown report on marketing strategy document that includes:
+    • Name of the strategy.
+    • Tactics specific to insurance products.
+    • Channels to educate and engage the audience.
+    • KPIs to measure success, such as policy inquiries or conversions.
+
+campaign_idea_task:
+  description: >
+    Develop innovative marketing campaign ideas focused on insurance products for {project_description}.
+    Ensure the ideas simplify complex insurance concepts, build trust, and emotionally connect with the audience.
+  expected_output: >
+    A list of 5 campaign ideas in mardown report, each including:
+    • Name of the campaign idea.
+    • Description of the idea.
+    • Intended audience (e.g., families, millennials, businesses).
+    • Proposed channel for delivery (e.g., social media, webinars, emails).
+    • Expected impact on customer understanding and trust.
+
+creative_review_task:
+  description: >
+    Review the creative materials developed for insurance-focused {project_description}.
+    Ensure they align with the company’s brand identity, comply with insurance regulations,
+    and effectively communicate the benefits of insurance products.
+  expected_output: >
+    A  markdown report on creative quality, including:
+    • Feedback on campaign ideas and messaging.
+    • Suggestions for improvement to align with insurance customer expectations.
+    • Confirmation of regulatory compliance and brand consistency.
+
+copy_creation_task:
+  description: >
+    Create compelling marketing copies for insurance campaigns based on approved {project_description}.
+    Ensure the messaging builds trust, simplifies insurance concepts, and emphasizes the emotional and practical
+    benefits of insurance.
+  expected_output: >
+    Detailed Markdown report on Marketing copies for each campaign idea, including:
+    • Title of the copy.
+    • Body of the copy.
+    • Messages that foster trust and promote long-term customer relationships while adhering to regulatory standards.

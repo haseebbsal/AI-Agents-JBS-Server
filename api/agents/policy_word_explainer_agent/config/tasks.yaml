@@ -1,0 +1,17 @@
+scraping_task:
+  description: >
+    Use the context of the conversation: {context}, and the user query: {query},
+    to extract relevant sections or content from the uploaded PDF document.
+  expected_output: >
+    A detailed segment or section of the PDF text related to the query.
+  agent: scraper
+
+query_resolver_task:
+  description: >
+    Based on the context: [ {context} ] and query: [ {query} ],
+    provide a simplified explanation in layman’s terms for any insurance-related jargon or
+    technical content identified.
+    Ensure responses are concise, easy to understand, and relevant.
+  expected_output: >
+    A markdown-formatted answer with simplified language, not exceeding 5 lines.
+  agent: query_resolver

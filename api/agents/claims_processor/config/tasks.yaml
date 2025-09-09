@@ -1,0 +1,13 @@
+analyze_task:
+  description: >
+    Compare the claims document text: [ {claims_text} ] against the predefined rules [ {rules_text} ] and identify any violations or compliance, insuring accuracy 
+  expected_output: >
+    A list of rules, marked as either "compliant" or "violated", based on the claims and rules text, with reasons.
+  agent: analyzer
+
+generate_report_task:
+  description: >
+    Generate a markdown report summarizing the compliance findings.
+  expected_output: >
+    A report containing the analysis results with a summary of compliance and violations formatted as markdown and not json without '```'.
+  agent: report_generator

@@ -1,0 +1,20 @@
+[project]
+name = "customer_reach_agent"
+version = "0.1.0"
+description = "customer-reach-agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+customer_reach_agent = "customer_reach_agent.main:run"
+run_crew = "customer_reach_agent.main:run"
+train = "customer_reach_agent.main:train"
+replay = "customer_reach_agent.main:replay"
+test = "customer_reach_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

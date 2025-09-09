@@ -1,0 +1,58 @@
+data_collection_task:
+  description: >
+    Collect comprehensive information about the {company_name} using the tools. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report including:
+      - **Company Overview**: Description, history, and other relevant details.
+      - **Key Products or Services**: Summary of offerings.
+      - **Financial Metrics**: Publicly available data.
+      - **Recent News**: Key announcements or articles.
+      - Make the markdown document without the '```'.
+
+
+financial_analysis_task:
+  description: >
+    Analyze financial data to evaluate the financial health of {company_name}. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report with:
+      - **Revenue Trends**: Patterns and observations.
+      - **Risk or Opportunity Highlights**: Key findings in financial data.
+  context:
+    - data_collection_task
+
+market_intelligence_task:
+  description: >
+    Analyze industry and competitive positioning of {company_name}. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report containing:
+      - **Industry Trends**: Insights into the broader market environment.
+      - **Key Competitors**: Analysis of competitor positions.
+      - **Opportunities and Threats**: Key factors affecting the market environment.
+      - Make the markdown document without the '```'.
+
+  context:
+    - data_collection_task
+
+risk_assessment_task:
+  description: >
+    Assess risk factors and potential red flags for {company_name}. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report containing:
+      - **Identified Risks**: Summary of potential issues.
+      - **Risk Scores**: Evaluation of the company's risk profile.
+  context:
+    - data_collection_task
+
+report_generation_task:
+  description: >
+    Generate a comprehensive report summarizing all findings. Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report including:
+      - **Executive Summary**: High-level overview of findings.
+      - **Detailed Insights**: Financial health, market intelligence, and risk factors.
+      - Make the markdown document without the '```'.
+
+  context:
+    - financial_analysis_task
+    - market_intelligence_task
+    - risk_assessment_task

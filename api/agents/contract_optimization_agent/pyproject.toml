@@ -1,0 +1,20 @@
+[project]
+name = "contract_optimization_agent"
+version = "0.1.0"
+description = "contract-optimization-agent using crewAI"
+authors = [{ name = "Sabih", email = "malicksabih@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.83.0,<1.0.0"
+]
+
+[project.scripts]
+contract_optimization_agent = "contract_optimization_agent.main:run"
+run_crew = "contract_optimization_agent.main:run"
+train = "contract_optimization_agent.main:train"
+replay = "contract_optimization_agent.main:replay"
+test = "contract_optimization_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,52 @@
+analyze_budget_task:
+  description: >
+    Use OpenAI to analyze the {file} and extract lines of business, budget figures, and financial trends.
+  inputs:
+    - file
+    - region
+  outputs:
+    - tabular_insights
+  expected_output: >
+    A structured Markdown output:
+      - **Lines of Business**:
+        - List of business lines extracted from the file.
+      - **Financial Trends**:
+        - Trends observed for each line of business.
+      - **Key Actionable Insights**:
+        - Bulleted insights based on the analysis of the data.
+
+research_market_task:
+  description: >
+    Research market trends for each extracted line of business in the specified {region}.Make the markdown document without the '```'.
+  inputs:
+    - tabular_insights
+    - region
+  outputs:
+    - market_research
+  expected_output: >
+    A structured Markdown output:
+      - **Market Trends for Each Line of Business**:
+        - Description of trends for each business line.
+      - **Economic Factors**:
+        - Factors affecting each line of business in the specified region.
+
+generate_forecast_task:
+  description: >
+    Generate a forecast for the next 12 months using budget data and identified market trends.Make the markdown document without the '```'.
+  inputs:
+    - analyzed_data
+    - lines_of_business
+    - market_trends
+  outputs:
+    - forecast_text: "A detailed narrative describing the forecast in Markdown."
+    - forecast_table: "A Markdown table summarizing the forecast."
+  expected_output: >
+    A structered Markdown output:
+      - **Forecast Narrative**:
+        - Describes the projected budget figures for each line of business.
+        - Highlights adjustments based on market trends and regional factors.
+      - **Forecast Table**:
+        - A Markdown table with:
+          * Headers for months, business lines, and budget categories.
+          * Rows for monthly projections per line of business.
+      - Make the markdown document without the '```'.

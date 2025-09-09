@@ -1,0 +1,35 @@
+gather_customer_input_task:
+  description: >
+    Collect comprehensive customer details dynamically for {customer_name}, a customer in the {age_group} age group, 
+    belonging to the {customer_segment} segment. The task must adapt questions based on {characteristics}, ensuring all essential information is captured.
+    Focus on identifying specific customer needs, preferences, and potential risks to provide highly personalized recommendations. 
+    The task must also address unique details, such as:
+      - Property ownership, professional interests, or key assets.
+      - Industry-specific risks for businesses or personal insurance needs for individuals.
+  expected_output: >
+    A Markdown report summarizing:
+      - **Customer Name**: {customer_name}.
+      - **Age Group**: {age_group}.
+      - **Customer Segment**: {customer_segment}.
+      - **Characteristics**:
+          - Specific needs, such as health concerns, financial planning goals, or property investment interests.
+          - Risks or challenges faced, including industry-specific vulnerabilities or personal asset protection needs.
+
+generate_recommendations_task:
+  description: >
+    Analyze the detailed inputs provided for {customer_name}, a customer in the {age_group} age group, 
+    belonging to the {customer_segment} segment, with specific characteristics like {characteristics}. 
+    Use the predefined recommendation matrix to match {customer_name}'s needs with the most relevant products. 
+    Each recommendation must include:
+      - Why the product is critical to addressing {customer_name}'s specific needs.
+      - How it mitigates risks or aligns with {characteristics}, including interests and assets.
+  expected_output: >
+    A Markdown report containing:
+      - **Recommended Products**: A concise list tailored to {customer_name}'s unique needs.
+      - **Explanations**:
+          - Detailed reasons for the relevance of each product for {customer_name}.
+          - Examples or scenarios showing how the product addresses challenges or aligns with goals.
+      - **Actionable Insights**:
+          - Key selling points for each product.
+          - Strategic suggestions for overcoming potential objections.
+          - Cross-selling opportunities aligned with {customer_name}'s interests.

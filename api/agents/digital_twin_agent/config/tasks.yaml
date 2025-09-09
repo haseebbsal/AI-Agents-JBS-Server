@@ -1,0 +1,73 @@
+research_task:
+  description: >
+    Each persona evaluates the provided product or marketing idea: "{product_marketing_idea}" 
+    in the specified geographical region: "{area}". 
+    Each persona must consider:
+      - How the product or marketing idea aligns with their unique background, values, and goals.
+      - Their specific reaction to the product or marketing idea based on their lifestyle and context.
+      - An assessment of price sensitivity (e.g., affordable, expensive, or moderately priced).
+      - Ideas for marketing the product to them specifically, considering their unique characteristics and priorities.
+      - The persona must reference specific aspects of their {area} context, such as legal requirements, lifestyle, and cultural considerations.
+      - The feedback should also include examples of how the product could solve a specific problem or improve the persona's life in {area}.
+      - Provide specific, actionable suggestions for tailoring the product or marketing message to the persona’s preferences and challenges in {area}.
+    After gathering feedback from all personas:
+      - Consolidate their insights into a comprehensive Markdown report with the following structure:
+      
+        # Summary
+        ## Key Similarities
+        - Highlight shared themes or trends across personas.
+
+        ## Key Differences
+        - Emphasize unique reactions or requirements across personas.
+
+        ## Regional Marketing Concept Ideas for {area}
+        - {area}-specific insights and practical suggestions.
+
+        # Recommendations
+        ## Actionable Recommendations
+        - Provide actionable recommendations for refining the product or marketing strategies based on persona feedback.
+
+        ## Next Steps
+        - Outline clear next steps for improving product alignment with the needs of personas in {area}.
+    - Make the markdown document without the '```'.
+  expected_output: >
+    A Markdown report with:
+    1. Persona-Specific Feedback:
+        ### persona_name
+        - **Reaction**: A detailed reaction to the product or marketing idea, incorporating how it fits into their unique context in {area}.
+        - **Price Sensitivity**: A nuanced assessment of price sensitivity with examples of what would be considered affordable, expensive, or reasonable for this persona.
+        - **Marketing Concept**: Comprehensive marketing ideas tailored to this persona, including specific messaging, channels, or approaches for {area}.
+        - **Specific Example**: A clear example of how the product or marketing idea solves a particular problem or improves the persona’s life in {area}.
+        - **Actionable Suggestions**: Detailed, actionable recommendations for tailoring the product or marketing message to address this persona’s challenges and preferences in {area}.
+      
+      - Consolidated Summary:
+        # Summary
+        ## Key Similarities
+        - Highlight shared themes or trends across personas.
+
+        ## Key Differences
+        - Emphasize unique reactions or requirements across personas.
+
+        ## Regional Marketing Concept Ideas for {area}
+        - {area}-specific insights and practical suggestions.
+
+        # Recommendations
+        ## Actionable Recommendations
+        - Provide actionable recommendations for refining the product or marketing strategies based on persona feedback.
+
+        ## Next Steps
+        - Outline clear next steps for improving product alignment with the needs of personas in {area}.
+    - Make the markdown document without the '```'.
+  agents:
+    - jordan_miller
+    - emily_and_michael_thompson
+    - linda_and_robert_johnson
+    - sarah_martinez
+    - alex_and_taylor_morgan
+    - mia_chen
+    - daniel_nguyen
+    - alex_rodriguez
+  logic: >
+    1. Gather detailed feedback from all personas using their unique perspectives and contexts.
+    2. Consolidate the feedback into a cohesive Markdown report, identifying key themes, differences, and regional considerations.
+    3. Summarize actionable recommendations and next steps for improving product alignment with the personas' needs.

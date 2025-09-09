@@ -1,0 +1,18 @@
+scraping_task:
+  description: >
+    Analyse the context of the converstation with the user: {context}, then extract the context of
+    the query {query}, and based on that, search for content related to this topic. 
+  expected_output: >
+    A detailed text of the related information 
+  agent: scraper
+
+query_resolver_task:
+  description: >
+    Review the context you got and make sure to simplify it, while staying true to replying to the query: [ {query} ]
+    and keeping in mind the context: [ {context} ]
+    every jargon or difficult thing should be converted into simple layman terms in your answer.
+    When answering, make sure to identify which policy or part of the information you are using to answer this question
+    Make sure the answer is easy to understand, concise and answers the query.
+  expected_output: >
+    An easy to understand and summarized answer within 5 lines, Formatted as markdown without '```'
+  agent: query_resolver
