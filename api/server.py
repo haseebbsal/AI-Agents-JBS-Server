@@ -30,6 +30,7 @@ import os
 from typing import Annotated,List
 from nanoid import generate
 import asyncio
+import uvicorn
 
 app = FastAPI()
 load_dotenv()
@@ -447,3 +448,8 @@ def getUsers():
 
 app.include_router(agent_router)
 app.include_router(auth_router)
+
+
+if __name__ == "__main__":
+    uvicorn.run("server:app", port=5000, log_level="info")
+    
